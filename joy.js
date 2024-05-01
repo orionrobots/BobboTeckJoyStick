@@ -83,7 +83,7 @@ var JoyStick = (function(container, parameters, callback)
         externalLineWidth = (typeof parameters.externalLineWidth === "undefined" ? 2 : parameters.externalLineWidth),
         externalStrokeColor = (typeof parameters.externalStrokeColor ===  "undefined" ? "#008000" : parameters.externalStrokeColor),
         autoReturnToCenter = (typeof parameters.autoReturnToCenter === "undefined" ? true : parameters.autoReturnToCenter),
-        root = (typeof parameters.root === "undefined" ? document : parameters.root;
+        root = (typeof parameters.root === "undefined" ? document : parameters.root);
 
     callback = callback || function(StickStatus) {};
 
