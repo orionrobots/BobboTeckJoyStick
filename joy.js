@@ -68,6 +68,7 @@ let StickStatus =
  *  externalLineWidth {Int} (optional) - External reference circonference width (Default value is 2)
  *  externalStrokeColor {String} (optional) - External reference circonference color (Default value is '#008000')
  *  autoReturnToCenter {Bool} (optional) - Sets the behavior of the stick, whether or not, it should return to zero position when released (Default value is True and return to zero)
+ *  root {Node} (optional) - Sets this to use a different root (eg shadow root), otherwise assumes it's document
  * @param callback {StickStatus} - 
  */
 var JoyStick = (function(container, parameters, callback)
@@ -81,12 +82,13 @@ var JoyStick = (function(container, parameters, callback)
         internalStrokeColor = (typeof parameters.internalStrokeColor === "undefined" ? "#003300" : parameters.internalStrokeColor),
         externalLineWidth = (typeof parameters.externalLineWidth === "undefined" ? 2 : parameters.externalLineWidth),
         externalStrokeColor = (typeof parameters.externalStrokeColor ===  "undefined" ? "#008000" : parameters.externalStrokeColor),
-        autoReturnToCenter = (typeof parameters.autoReturnToCenter === "undefined" ? true : parameters.autoReturnToCenter);
+        autoReturnToCenter = (typeof parameters.autoReturnToCenter === "undefined" ? true : parameters.autoReturnToCenter),
+        root = (typeof parameters.root === "undefined" ? document : parameters.root);
 
     callback = callback || function(StickStatus) {};
 
     // Create Canvas element and add it in the Container object
-    var objContainer = document.getElementById(container);
+    var objContainer = root.getElementById(container);
     
     // Fixing Unable to preventDefault inside passive event listener due to target being treated as passive in Chrome [Thanks to https://github.com/artisticfox8 for this suggestion]
     objContainer.style.touchAction = "none";
